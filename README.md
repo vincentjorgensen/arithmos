@@ -1,6 +1,9 @@
-===============
-       arithmos
-===============
+ arithmos
+=========
+
+.. image:: https://img.shields.io/badge/License-GPL%203.0-green.svg
+   :target: https://www.gnu.org/licenses/gpl-3.0.en.html
+   :alt: License: GPL-3.0
 
 Rust library for converting Arabic numerals (1,2,3...) to Ancient Greek
 numerals (α', β', γ' ...)
