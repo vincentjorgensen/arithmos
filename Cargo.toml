@@ -7,7 +7,7 @@ license = "GPL-3.0"
 authors = ["Vincent Jorgensen [vincentjorgensen@tutanota.com"]
 repository = "" # TODO
 description = "A library for converting Arabic numerals into Greek numerals."
-readme = "README.md"
+readme = "README.rst"
 keywords = ["ancient", "greek", "numerals", "arabic", "convert"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

@@ -1,3 +1,4 @@
+=========
  arithmos
 =========
 
@@ -23,7 +24,9 @@ fn main() {
 License
 =======
 
-GPL-3.0
+`GPL-3.0`__
+
+__ ./LICENSE
 
 Contribution
 ------------
