@@ -22,7 +22,7 @@ use core::fmt;
 /// The value of the smallest Greek numeral
 pub const MIN: u32 = 0;
 /// The value of the largest Greek numeral
-pub const MAX: u32 = 9_999;
+pub const MAX: u32 = 49_999;
 
 /// Returned as an error if a numeral is constructed with an invalid input
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
@@ -31,13 +31,13 @@ pub struct OutOfRangeError;
 
 impl fmt::Display for OutOfRangeError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "Number out of range (must be between 1 and 9,999).")
+        write!(f, "Number out of range (must be between 1 and 49,999).")
     }
 }
 
 /// A Greek numeral
 ///
-/// Values from 0 to 9999 are currently supported
+/// Values from 0 to 49,9999 are currently supported
 #[non_exhaustive]
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub struct GreekNumeral(u32);
@@ -55,8 +55,8 @@ impl GreekNumeral {
     //     assert_eq!("ΜΒ'", answer.to_uppercase());
     ///
     pub const fn new(value: u32) -> Result<Self, OutOfRangeError> {
-        if value < 10_000 {
-            // SAFETY: 0 <= value <= 9,999
+        if value <= 49_999 {
+            // SAFETY: 0 <= value <= 49,999
             Ok(Self(value))
         } else {
             Err(OutOfRangeError)
@@ -154,6 +154,7 @@ impl fmt::Display for GreekNumeral {
     }
 }
 
+// based on https://en.wikipedia.org/wiki/Greek_numerals
 #[cfg(feature = "std")]
 struct Arabic2GreekStruct<'a> {
     arabic: u32,
@@ -162,7 +163,27 @@ struct Arabic2GreekStruct<'a> {
 }
 
 #[cfg(feature = "std")]
-static ARITHMOI: [Arabic2GreekStruct; 36] = [
+static ARITHMOI: [Arabic2GreekStruct; 40] = [
+    Arabic2GreekStruct {
+        arabic: 40000,
+        u_attic: "͵Μ",
+        l_attic: "͵μ",
+    },
+    Arabic2GreekStruct {
+        arabic: 30000,
+        u_attic: "͵Λ",
+        l_attic: "͵λ",
+    },
+    Arabic2GreekStruct {
+        arabic: 20000,
+        u_attic: "͵Κ",
+        l_attic: "͵κ",
+    },
+    Arabic2GreekStruct {
+        arabic: 10000,
+        u_attic: "͵Ι",
+        l_attic: "͵ι",
+    },
     Arabic2GreekStruct {
         arabic: 9000,
         u_attic: "͵Θ",
@@ -477,9 +498,10 @@ mod test {
         assert_eq!(GreekNumeral::new(1_u8.into()), Ok(GreekNumeral(1_u32)));
         assert_eq!(GreekNumeral::new(1_u32), Ok(GreekNumeral(1_u32)));
         assert_eq!(GreekNumeral::new(42), Ok(GreekNumeral(42_u32)));
-        assert_eq!(GreekNumeral::new(9_999), Ok(GreekNumeral(9_999_u32)));
-        assert_eq!(GreekNumeral::new(MAX), Ok(GreekNumeral(9_999_u32)));
-        assert!(matches!(GreekNumeral::new(10_000), Err(OutOfRangeError)));
+        assert_eq!(GreekNumeral::new(616), Ok(GreekNumeral(616_u32)));
+        assert_eq!(GreekNumeral::new(49_999), Ok(GreekNumeral(49_999_u32)));
+        assert_eq!(GreekNumeral::new(MAX), Ok(GreekNumeral(49_999_u32)));
+        assert!(matches!(GreekNumeral::new(50_000), Err(OutOfRangeError)));
         assert!(matches!(GreekNumeral::new(u32::MAX), Err(OutOfRangeError)));
     }
 
@@ -501,7 +523,7 @@ mod test {
     //    #[test]
     //    #[cfg(feature = "std")]
     //    fn test_roman_numeral_round_trip() {
-    //        for i in 1..=9_999 {
+    //        for i in 1..=49_999 {
     //            let r = GreekNumeral::new(i).unwrap().to_string();
     //            let parsed: GreekNumeral = r.parse().unwrap();
     //            let val = parsed.0;
