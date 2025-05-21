@@ -11,15 +11,16 @@ numerals (α', β', γ' ...)
 
 Example usage
 =============
-```rust
-use arithmos::GreekNumeral;
 
-fn main() {
-   let num = GreekNumeral::new(616);
-   println!("{}", num); // ΧΙϜ'
-   assert_eq!("ΧΙϜ'".parse().unwrap(), num);
-}
-```
+.. code-block:: rust
+
+   use arithmos::GreekNumeral;
+
+   fn main() {
+      let num = GreekNumeral::new(616);
+      println!("{}", num); // ΧΙϜ'
+      assert_eq!("ΧΙϜ'".parse().unwrap(), num);
+   }
 
 License
 =======
