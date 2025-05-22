@@ -17,7 +17,7 @@ Example usage
    use arithmos::GreekNumeral;
 
    fn main() {
-      let num = GreekNumeral::new(616);
+      let num = GreekNumeral::new(616).unwrap();
       println!("{}", num); // ΧΙϜ'
       assert_eq!("ΧΙϜ'".parse().unwrap(), num);
    }
