@@ -8,7 +8,7 @@ authors = ["Vincent Jorgensen [vincent.jorgensen@gmail.com"]
 homepage = "https://codeberg.org/utricularius"
 repository = "https://codeberg.org/utricularius/arithmos"
 description = "A library for converting Arabic numerals into Greek numerals"
-readme = "README.rst"
+readme = "README.md"
 keywords = ["ancient", "greek", "numerals", "arabic", "convert"]
 
 [dependencies]
