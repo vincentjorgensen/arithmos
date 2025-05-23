@@ -1,6 +1,6 @@
-=========
+=============
  arabic2greek
-=========
+=============
 
 .. image:: https://img.shields.io/badge/License-GPL%203.0-green.svg
    :target: https://www.gnu.org/licenses/gpl-3.0.en.html
