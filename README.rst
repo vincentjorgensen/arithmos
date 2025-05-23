@@ -27,7 +27,7 @@ License
 
 `GPL-3.0`__
 
-__ LICENSE
+__ main/LICENSE
 
 Contribution
 ------------
