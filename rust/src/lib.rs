@@ -21,6 +21,9 @@ pub const MIN: u32 = 0;
 /// The value of the largest Greek numeral
 pub const MAX: u32 = 999_999;
 
+/// [`Result`](std::result::Result) with error defaulted to [`xvii::Error`](Error)
+pub type Result<T, E = OutOfRangeError> = core::result::Result<T, E>;
+
 /// Returned as an error if a numeral is constructed with an invalid input
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 #[non_exhaustive]
@@ -587,6 +590,14 @@ mod test {
         assert_eq!(GreekNumeral::try_from(1_i32), Ok(GreekNumeral(1_u32)));
         assert_eq!(GreekNumeral::try_from(1_i64), Ok(GreekNumeral(1_u32)));
         assert_eq!(GreekNumeral::try_from(1_i128), Ok(GreekNumeral(1_u32)));
+    }
+
+    #[test]
+    fn test_greek_numeral_to_string() {
+        assert_eq!(GreekNumeral::new(0).unwrap().to_string(), "𐆊'");
+        assert_eq!(GreekNumeral::new(1).unwrap().to_string(), "Α'");
+        assert_eq!(GreekNumeral::new(616).unwrap().to_string(), "ΧΙϜ'");
+        assert_eq!(GreekNumeral::new(1984).unwrap().to_string(), "͵ΑϠΠΔ'");
     }
 
     //    #[test]
