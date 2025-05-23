@@ -14,9 +14,6 @@
 #![warn(clippy::print_stderr)]
 #![warn(clippy::print_stdout)]
 
-#[cfg(not(feature = "std"))]
-extern crate alloc;
-
 use core::fmt;
 
 /// The value of the smallest Greek numeral
@@ -52,7 +49,7 @@ impl GreekNumeral {
     /// .. code-block:: rust
     ///
     //     let answer: GreekNumeral = GreekNumeral::new(42).unwrap();
-    //     assert_eq!("ΜΒ'", answer.to_uppercase());
+    //     assert_eq!("XLII", answer.to_uppercase());
     ///
     pub const fn new(value: u32) -> Result<Self, OutOfRangeError> {
         if value <= 999_999 {
