@@ -1,26 +1,22 @@
 =========
- arithmos
+ arabic2greek
 =========
 
 .. image:: https://img.shields.io/badge/License-GPL%203.0-green.svg
    :target: https://www.gnu.org/licenses/gpl-3.0.en.html
    :alt: License: GPL-3.0
 
-Rust library for converting Arabic numerals (1,2,3...) to Ancient Greek
-numerals (α', β', γ' ...)
+Rust script that implements the GreekNumeral library in this repository
 
 Example usage
 =============
 
-.. code-block:: rust
+.. code-block:: bash
 
-   use arithmos::GreekNumeral;
+   cargo build --release
 
-   fn main() {
-      let num = GreekNumeral::new(616).unwrap();
-      println!("{}", num); // ΧΙϜ'
-      assert_eq!("ΧΙϜ'".parse().unwrap(), num);
-   }
+   ./target/release/arabic2greek 1 # Α'
+   ./target/release/arabic2greek 616 # ΧΙϜ'
 
 License
 =======
